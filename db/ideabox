@@ -1,8 +1,8 @@
 ---
 ideas:
 - title: diet
-  description: mostly yummy stuff
-- title: fresh air
-  description: all the time
+  description: chocolate all the time
+  id: 1
 - title: exercise
-  description: biking
+  description: a little here and there
+  id: 2

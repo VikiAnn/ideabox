@@ -3,7 +3,6 @@ Bundler.require
 
 require 'idea_box'
 
-
 class IdeaBoxApp < Sinatra::Base
   set :method_override, true
   set :root, 'lib/app'
@@ -25,6 +24,11 @@ class IdeaBoxApp < Sinatra::Base
     erb :edit, locals: {idea: idea}
   end
 
+  get '/:id/view' do |id|
+    idea = IdeaStore.find(id.to_i)
+    erb :view_idea, locals: {idea: idea}
+  end
+
   put '/:id' do |id|
     IdeaStore.update(id.to_i, params[:idea])
     redirect '/'
@@ -39,7 +43,14 @@ class IdeaBoxApp < Sinatra::Base
     idea = IdeaStore.find(id.to_i)
     idea.like!
     IdeaStore.update(id.to_i, idea.to_h)
-    redirect '/'
+    redirect params["route"]
+  end
+
+  post '/:id/unlike' do |id|
+    idea = IdeaStore.find(id.to_i)
+    idea.unlike!
+    IdeaStore.update(id.to_i, idea.to_h)
+    redirect params["route"]
   end
 
   delete '/:id' do |id|
