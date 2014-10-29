@@ -3,6 +3,14 @@ ideas:
 - title: diet
   description: chocolate all the time
   id: 1
+  rank: -1
 - title: exercise
   description: a little here and there
   id: 2
+- title: new idea
+  description: it has details
+  id: 3
+  rank: 1
+- title: chocolate flavor
+  description: peppermint banana (eww)
+  id: 4

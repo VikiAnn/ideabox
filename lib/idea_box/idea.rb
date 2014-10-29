@@ -9,10 +9,6 @@ class Idea
     @id = attributes["id"]
   end
 
-  def save
-    IdeaStore.create(to_h)
-  end
-
   def to_h
     {"id" => id, "title" => title, "description" => description, "rank" => rank}
   end
