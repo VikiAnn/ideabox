@@ -1,7 +1,13 @@
 source 'https://rubygems.org'
 
-gem 'sinatra', require: 'sinatra/base'
-gem 'sinatra-contrib', require: 'sinatra/reloader'
+gem 'sinatra'
 gem 'haml'
-gem 'simplecov'
+gem 'shotgun'
 gem 'pry'
+
+group :test do
+  gem 'simplecov'
+  gem 'minitest'
+  gem 'nokogiri'
+  gem 'rack-test', require: 'rack/test'
+end

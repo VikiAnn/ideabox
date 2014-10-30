@@ -1,5 +1,5 @@
 require_relative 'test_helper'
-require_relative '../lib/idea_box/idea'
+require 'idea_box/idea'
 
 class IdeaTest < Minitest::Test
   def test_it_has_a_title

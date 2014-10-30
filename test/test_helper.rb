@@ -1,9 +1,7 @@
-$:.unshift File.expand_path("./../../lib", __FILE__)
+require 'bundler'
+Bundler.require(:default, :test)
 require 'minitest/autorun'
 require 'minitest/pride'
-require 'rack/test'
-require 'simplecov'
-require 'nokogiri'
-require 'app'
+$:.unshift File.expand_path("../../lib", __FILE__)
 
 SimpleCov.start
