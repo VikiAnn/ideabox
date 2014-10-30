@@ -8,7 +8,7 @@ class IdeaBoxApp < Sinatra::Base
   set :root, 'lib/app'
 
   not_found do
-    erb :error
+    haml :error
   end
 
   configure :development do
@@ -16,17 +16,17 @@ class IdeaBoxApp < Sinatra::Base
   end
 
   get '/' do
-    erb :index, locals: {ideas: IdeaStore.all.sort, idea: Idea.new(params)}
+    haml :index, locals: {ideas: IdeaStore.all.sort, idea: Idea.new(params)}
   end
 
   get '/:id/edit' do |id|
     idea = IdeaStore.find(id.to_i)
-    erb :edit, locals: {idea: idea}
+    haml :edit, locals: {idea: idea}
   end
 
   get '/:id/view' do |id|
     idea = IdeaStore.find(id.to_i)
-    erb :view_idea, locals: {idea: idea}
+    haml :view_idea, locals: {idea: idea}
   end
 
   put '/:id' do |id|

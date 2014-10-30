@@ -1,9 +1,25 @@
 require 'yaml/store'
 
 class IdeaStore
+  def self.database
+    return @database if @database
+
+    @database ||= YAML::Store.new "db/ideabox"
+    @database.transaction do
+      @database['ideas'] ||= []
+    end
+    @database
+  end
+
   def self.all
     raw_ideas.map do |data|
       Idea.new(data)
+    end
+  end
+
+  def self.raw_ideas
+    database.transaction do |db|
+      db['ideas'] || []
     end
   end
 
@@ -11,12 +27,6 @@ class IdeaStore
     attributes = attributes.merge("id" => next_id)
     database.transaction do
       database['ideas'] << attributes
-    end
-  end
-
-  def self.raw_ideas
-    database.transaction do |db|
-      db['ideas'] || []
     end
   end
 
@@ -29,16 +39,6 @@ class IdeaStore
     database.transaction do
       database['ideas'].find { |idea| idea['id'] == id }
     end
-  end
-
-  def self.database
-    return @database if @database
-
-    @database ||= YAML::Store.new "db/ideabox"
-    @database.transaction do
-      @database['ideas'] ||= []
-    end
-    @database
   end
 
   def self.delete(id)

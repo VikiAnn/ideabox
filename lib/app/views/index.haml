@@ -1,0 +1,25 @@
+%h1 IdeaBox
+%form{:action => "/", :method => "POST"}
+  %p
+    Your Idea:
+  %input{:name => "idea[title]", :type => "text"}
+  %br
+  %textarea{:name => "idea[description]"}
+  %br
+  %input{:type => "submit"}
+%h3 Existing Ideas
+%ul
+  - ideas.each do |idea|
+    %li
+      %a{:href => "/#{idea.id}/view"}= idea.title
+      %br
+      id: #{idea.id}
+      %br
+      = idea.description
+      %form{:action => "/#{idea.id}/like", :method => "POST", :style => "display: inline"}
+        %input{:name => "route", :type => "hidden", :value => "/"}
+        %input{:type => "submit", :value => "+"}
+      %form{:action => "/#{idea.id}/unlike", :method => "POST", :style => "display: inline"}
+        %input{:name => "route", :type => "hidden", :value => "/"}
+        %input{:type => "submit", :value => "-"}
+      %a{:href => "/#{idea.id}/edit"} Edit

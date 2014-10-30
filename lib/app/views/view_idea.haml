@@ -1,0 +1,22 @@
+%h1 IdeaBox
+%p
+  Idea: #{idea.title}
+%p
+  Description: #{idea.description}
+%p
+  ID: #{idea.id}
+%p
+  Rank: #{idea.rank}
+%form{:action => "/#{idea.id}/like", :method => "POST", :style => "display: inline"}
+  %input{:type => "submit", :value => "+"}
+  %input{:name => "route", :type => "hidden", :value => "#{idea.id}/view"}
+%form{:action => "/#{idea.id}/unlike", :method => "POST", :style => "display: inline"}
+  %input{:name => "route", :type => "hidden", :value => " #{idea.id} /view"}
+  %input{:type => "submit", :value => "-"}
+%form{:action => "/#{idea.id}", :method => "POST", :style => "display: inline"}
+  %input{:name => "_method", :type => "hidden", :value => "DELETE"}
+  %input{:type => "submit", :value => "delete"}
+%form{:action => "index.html", :id => "/#{idea.id}/edit", :method => "post", :style => "display: inline"}
+  %input{:type => "submit", :value => "edit"}
+%br
+%a{:href => "/"} Home
