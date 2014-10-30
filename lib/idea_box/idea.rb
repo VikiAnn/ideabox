@@ -7,6 +7,15 @@ class Idea
     @description = attributes["description"]
     @rank = attributes["rank"] || 0
     @id = attributes["id"]
+    @tag = tag_unless_nil(attributes["tag"])
+  end
+
+  def tag_unless_nil(tag = nil)
+    if tag
+      Tag.new(tag, id)
+    else
+      nil
+    end
   end
 
   def to_h

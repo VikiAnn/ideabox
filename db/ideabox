@@ -14,3 +14,15 @@ ideas:
 - title: chocolate flavor
   description: peppermint banana (eww)
   id: 4
+- title: idea
+  description: no tag
+  tag: ''
+  id: 6
+- title: idea
+  description: tagging
+  tag: wow
+  id: 7
+- title: new idea without a tag
+  description: let's see what this does...
+  tag: ''
+  id: 8

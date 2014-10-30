@@ -2,9 +2,11 @@
 %form{:action => "/", :method => "POST"}
   %p
     Your Idea:
-  %input{:name => "idea[title]", :type => "text"}
+  %input{:name => "idea[title]", :type => "text", :placeholder => "Title"}
   %br
-  %textarea{:name => "idea[description]"}
+  %textarea{:name => "idea[description]", :placeholder => "Description"}
+  %br
+  %textarea{:name => "idea[tag]", :placeholder => "Tag"}
   %br
   %input{:type => "submit"}
 %h3 Existing Ideas
